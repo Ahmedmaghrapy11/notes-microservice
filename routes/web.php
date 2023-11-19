@@ -14,15 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware('jwt.auth')->group(function () {
-    Route::get('/notes', [NoteController::class, 'index']);
-    Route::get('/notes/{id}', [NoteController::class, 'show']);
-    Route::post('/notes/create', [NoteController::class,'create']);
-    Route::post('/notes/update/{id}', [NoteController::class,'update']);
-    Route::post('/notes/delete/{id}', [NoteController::class,'destroy']);
+    Route::get('/api/notes', [NoteController::class, 'index']);
+    Route::get('/api/notes/{id}', [NoteController::class, 'show']);
+    Route::post('/api/notes/create', [NoteController::class,'create']);
+    Route::post('/api/notes/update/{id}', [NoteController::class,'update']);
+    Route::post('/api/notes/delete/{id}', [NoteController::class,'destroy']);
 });
 
